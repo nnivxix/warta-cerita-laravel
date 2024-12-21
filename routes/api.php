@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StoryController;
 use App\Http\Controllers\LogoutController;
 
 Route::get('/', function () {
@@ -17,6 +18,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         return $request->user();
     })
         ->name('user');
+
+    Route::get('/stories', [StoryController::class, 'index'])->name('stories.index');
 
     Route::delete('/logout', LogoutController::class)->name('logout');
 });

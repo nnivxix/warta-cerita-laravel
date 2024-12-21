@@ -9,4 +9,9 @@ class Story extends Model
 {
     /** @use HasFactory<\Database\Factories\StoryFactory> */
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
